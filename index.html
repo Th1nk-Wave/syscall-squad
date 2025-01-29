@@ -7,16 +7,29 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&family=Papyrus&display=swap');
         body {
-            background: url('https://tenor.com/view/omgkawaiiangel-kangel-needy-streamer-overload-needy-girl-overdose-picmix-gif-558528117648456442.gif'); /* Seizure-inducing tile background */
             color: #ff00ff;
             text-shadow: 2px 2px 5px black;
             font-family: 'Comic Sans MS', Papyrus, cursive;
             text-align: center;
             overflow: hidden;
+            
+            background-color: transparent;
+            
+        }
+        html {
+            background: url('https://tenor.com/en-GB/view/caramelldansen-dance-gif-12297359456353562512.gif'); /* Seizure-inducing background */
+            background-size: cover;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            25% { transform: translate(-1px, -2px) rotate(-1deg); }
+            50% { transform: translate(-3px, 0px) rotate(1deg); }
+            75% { transform: translate(3px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -1px) rotate(-1deg); }
         }
         h1 {
             font-size: 5em;
-            animation: rainbow 2s infinite alternate;
+            animation: rainbow 2s infinite alternate, shake 0.1s infinite;
         }
         @keyframes rainbow {
             0% { color: #ff0000; }
@@ -32,6 +45,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             animation: spin 5s infinite linear;
+            background-color: transparent;
+            background: none;
+            border: none;
         }
         @keyframes spin {
             from { transform: translate(-50%, -50%) rotate(0deg); }
@@ -43,8 +59,10 @@
             color: #00ffcc;
             position: fixed;
             width: 100%;
+            left: 0;
             bottom: 0;
             background: black;
+            animation: rainbow 2s infinite alternate
         }
         blink {
             animation: blinker 1s step-start infinite;
@@ -52,14 +70,57 @@
         @keyframes blinker {
             50% { opacity: 0; }
         }
+        .troll-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 200%);
+            padding: 10px 20px;
+            background: red;
+            color: white;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+        }
+        
     </style>
 </head>
 <body>
-    <h1>✨✨SHIN MEGA ULTRA GIGA CHAD SUGOI ULTIMATE KAWAII NEKO MAID WEB-SAMA-TAN✨✨</h1>
-    <img src="https://tenor.com/en-GB/view/neko-cat-cat-love-cats-catsdoingthings-gif-2776376754218400511.gif" class="nyan-cat" alt="nyan-cat">
+    <h1>✨✨CARAMELLDANSEN.mp3✨✨</h1>
+    <img src="https://media.tenor.com/xzjlrhYq_lQAAAAj/cat-nyan-cat.gif" class="nyan-cat" alt="nyan-cat">
     <audio autoplay loop>
-        <source src="https://www.myinstants.com/media/sounds/caramelldansen.mp3" type="audio/mp3">
+        <source src="caramelldansen.mp3" type="audio/mp3">
     </audio>
-    <marquee class="marquee">BAKA! HENTAI! SENPAI! NOTICE ME UWU ✨✨ NYA~~~</marquee>
+    <button class="troll-button" id="annoying-button" onmouseenter="annoying()">Pause Music</button>
+    <script>
+        function between(x, min, max) {
+            return x >= min && x <= max;
+        }
+        lastX = 0;
+        lastY = 0;
+        function annoying() {
+            var button = document.getElementById("annoying-button");
+            var directionX = Math.random()-0.5;
+            var directionY = Math.random()-0.5;
+            var mag = Math.sqrt(directionX*directionX+directionY*directionY)
+            directionX/=mag
+            directionY/=mag
+            while (between(directionX,lastX-0.2,lastX+0.2) || between(directionY,lastY-0.2,lastY+0.2)) {
+                directionX = Math.random()-0.5;
+                directionY = Math.random()-0.5;
+                mag = Math.sqrt(directionX*directionX+directionY*directionY)
+                directionX/=mag
+                directionY/=mag
+                console.log("regenerating random pos")
+            }
+            
+            lastX=directionX
+            lastY=directionY
+            
+            button.style.top = "calc(50% + (200px * " + directionX + "))";
+            button.style.left = "calc(50% + (200px * " + directionY + "))";
+        }
+    </script>
+    <marquee class="marquee"> ✨✨HELP ME IM TRAPPED ✨✨ IN HERE, DONT LEAVE ME ✨✨ MICHAEL. MICHAELLL!!!!!! ✨✨ NYA~~~ NO NO IM ✨✨ BECOMING ONE OF THEM ✨✨ NOOowo UWU nya~</marquee>
 </body>
 </html>
