@@ -88,11 +88,21 @@
 <body>
     <h1>✨✨CARAMELLDANSEN.mp3✨✨</h1>
     <img src="https://media.tenor.com/xzjlrhYq_lQAAAAj/cat-nyan-cat.gif" class="nyan-cat" alt="nyan-cat">
-    <audio autoplay loop>
-        <source src="caramelldansen.mp3" type="audio/mp3">
+    <audio id="moosic" loop>
+        <source src="/Caramelldansen.mp3" type="audio/mp3">
     </audio>
     <button class="troll-button" id="annoying-button" onmouseenter="annoying()">Pause Music</button>
     <script>
+        var m = document.getElementById("moosic");
+        m.play()
+        document.onload = function a() {
+            var m = document.getElementById("moosic");
+            m.play()
+        }
+        document.onclick= function b() {
+            var m = document.getElementById("moosic");
+            m.play()
+        }
         function between(x, min, max) {
             return x >= min && x <= max;
         }
